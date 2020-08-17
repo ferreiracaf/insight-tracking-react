@@ -1,0 +1,22 @@
+.MeuTitulo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.MeuTitulo .mButtons {
+    min-width: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.myInput {
+    margin-right: 1rem;
+}
+
+.myAdd {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
