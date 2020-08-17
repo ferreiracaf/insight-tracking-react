@@ -10,11 +10,13 @@ import ListarCategorias from './components/categoria/ListarCategorias';
 import AtualizarCategoria from './components/categoria/AtualizarCategoria';
 import CriarCategoria from './components/categoria/CriarCategoria';
 import ListarUsuarios from './components/usuario/ListarUsuarios';
+import MostrarUsuario from './components/usuario/MostrarUsuario';
 import CriarUsuario from './components/usuario/CriarUsuario';
 import AtualizarUsuario from './components/usuario/AtualizarUsuario';
 import ListarAtividades from './components/atividade/ListarAtividades';
 import CriarAtividade from './components/atividade/CriarAtividade';
 import AtualizarAtividade from './components/atividade/AtualizarAtividade';
+import MostrarAtividade from './components/atividade/MostrarAtividade';
 
 
 export default class App extends Component {
@@ -48,7 +50,9 @@ export default class App extends Component {
             <Route exact path="/usuarios/todos" component={ListarUsuarios} />
             <Route exact path="/usuarios/criar" component={CriarUsuario} />
             <Route exact path="/usuarios/atualizar/:id" component={AtualizarUsuario} />
+            <Route exact path="/usuarios/:id" component={MostrarUsuario} />
             <Route exact path="/atividades/todas" component={ListarAtividades} />
+            <Route exact path="/atividades/:id" component={MostrarAtividade} />
             <Route exact path="/atividades/criar" component={CriarAtividade} />
             <Route exact path="/atividades/atualizar/:id" component={AtualizarAtividade} />
             
