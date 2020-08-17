@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios'
 
-export default class CriarUsuario extends Component {
+
+export default class AtualizarAtividade extends Component {
 
     constructor(props) {
         super(props)
@@ -16,33 +17,32 @@ export default class CriarUsuario extends Component {
 
     getEmptyState(){
         return {
-            nome: '', descricao: '', observacao: '',
+            id: '', nome: '', descricao: '', observacao: '',
             id_categoria: '', cpf_usuario: ''
         }
     }
 
     onSubmit(e) {
         e.preventDefault()
-        const {nome, descricao, observacao, id_categoria, cpf_usuario} = this.state
+        const {id, nome, descricao, observacao, id_categoria, cpf_usuario} = this.state
         const usuarioPromise = Axios.get('http://localhost:8080/usuarios/'+cpf_usuario)
         const categoriaPromise = Axios.get('http://localhost:8080/categorias/'+id_categoria)
         
         Promise.all([usuarioPromise, categoriaPromise])
             .then(([{data: usuario}, {data: categoria}]) =>{
-                
-                const novaAtividade = {
+                const atividadeAtualizada = {
                     nome, 
                     descricao, 
                     observacao,
                     categoria,
                     usuario
                 }
-                return Axios.post('http://localhost:8080/atividades', novaAtividade)
+                return Axios.put('http://localhost:8080/atividades/'+id, atividadeAtualizada)
             })
         .then(
             (res) =>{
                 this.props.history.push('/atividades/todas')
-                console.log('Atividade adicionado com sucesso.')
+                console.log('Atividade aualizada com sucesso.')
             }
         )
         .catch(
@@ -50,19 +50,35 @@ export default class CriarUsuario extends Component {
                 console.log(error)
             }
         )
-        // this.setState(this.getEmptyState())
     }
 
-    quandoAlterarFilho(ret) {
-        console.log(ret)
+    componentDidMount(){
+        Axios.get('http://localhost:8080/atividades/'+this.props.match.params.id)
+        .then(
+            (res) =>{
+                this.setState({
+                    id: res.data.id, 
+                    nome: res.data.nome, 
+                    descricao: res.data.descricao, 
+                    observacao: res.data.observacao,
+                    id_categoria: res.data.categoria.id, 
+                    cpf_usuario: res.data.cpf_usuario
+                })
+            }
+        )
+        .catch(
+            (error)=>{
+                console.log(error)
+            }
+        )
     }
 
     render() {
         return (
             <div style={{ marginTop: 10 }}>
-                <h2>Adicionar Atividade</h2>
+                <h3>Editar Atividade</h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+                <div className="form-group">
                         <label>Nome: </label>
                         <input type="text" required className="form-control" value={this.state.nome} onChange={this.setField('nome')} />
                     </div>
@@ -83,7 +99,7 @@ export default class CriarUsuario extends Component {
                         <input type="text" className="form-control" value={this.state.cpf_usuario} onChange={this.setField('cpf_usuario', _formatCpf)} />
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Adicionar" className="btn btn-primary" />
+                        <input type="submit" value="Atualizar" className="btn btn-primary" />
                     </div>
                 </form>
             </div>
@@ -109,12 +125,3 @@ function _formatCpf(value) {
     }
     return finalValue
 }
-
-// function formCampo({label, value, onChange, type, required}){
-//     return (
-//         <div className="form-group">
-//             <label>{label}: </label>
-//             <input type={type} required={required} className="form-control" value={value} onChange={onChange} />
-//         </div>
-//     )
-// }

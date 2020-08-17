@@ -14,6 +14,7 @@ import CriarUsuario from './components/usuario/CriarUsuario';
 import AtualizarUsuario from './components/usuario/AtualizarUsuario';
 import ListarAtividades from './components/atividade/ListarAtividades';
 import CriarAtividade from './components/atividade/CriarAtividade';
+import AtualizarAtividade from './components/atividade/AtualizarAtividade';
 
 
 export default class App extends Component {
@@ -49,6 +50,7 @@ export default class App extends Component {
             <Route exact path="/usuarios/atualizar/:id" component={AtualizarUsuario} />
             <Route exact path="/atividades/todas" component={ListarAtividades} />
             <Route exact path="/atividades/criar" component={CriarAtividade} />
+            <Route exact path="/atividades/atualizar/:id" component={AtualizarAtividade} />
             
             
             {/* not functional */}

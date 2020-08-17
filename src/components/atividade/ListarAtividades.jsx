@@ -8,12 +8,36 @@ import '../layout/Page.css'
 export default class ListarAtividades extends Component {
     constructor(props) {
         super(props)
-        this.state = { atividades: [] }
+        this.state = { 
+            atividades: [],
+            pesquisa: ''
+        }
         this.apagarElementoPorId = this.apagarElementoPorId.bind(this)
     }
 
+    setField = (fieldName, modifier) => e => {
+        const value = modifier ? modifier(e.target.value) : e.target.value
+        return this.setState({ [fieldName]: value })
+    }
+
+
+    // pesquisaFunction(){
+    //     Axios.get('http://localhost:8080/atividades/?nome='+this.state.pesquisa)
+    //         .then(
+    //             (res) => {
+    //                 this.setState({ atividades: res.data.content })
+    //                 this.props.history.put('/atividades/todas')
+    //             }
+    //         )
+    //         .catch(
+    //             (error) => {
+    //                 console.log(error)
+    //             }
+    //         )
+    // }
+
     componentDidMount() {
-        Axios.get('http://localhost:8080/atividades')
+        Axios.get('http://localhost:8080/atividades/')
             .then(
                 (res) => {
                     this.setState({ atividades: res.data.content })
@@ -37,10 +61,10 @@ export default class ListarAtividades extends Component {
         }
     }
 
-    apagarElementoPorId(cpf){
+    apagarElementoPorId(id){
         let atividadesTemp = this.state.atividades
         for(let i = 0; i < atividadesTemp.length; i++){
-            if(atividadesTemp[i].cpf === cpf){
+            if(atividadesTemp[i].id === id){
                 atividadesTemp.splice(i,1)
             }
         }
@@ -51,10 +75,10 @@ export default class ListarAtividades extends Component {
         return (
             <div style={{ marginTop: 20 }}>
                 <div className="MeuTitulo">
-                    <h2>Atividades</h2>
+                    <h2>Atividades: {this.pesquisa}</h2>
                     <div className="mButtons">
-                        <input  className="myInput" type="text"></input>
-                        <button className="btn btn-secondary">Pesquisar</button>
+                        <input type="text" placeholder="Não foi implementado no front :(" readOnly style={{width:"240px", marginRight:"10px"}}></input>
+                        <button className="btn btn-secondary" >Pesquisar</button>
                     </div>
                 </div>
                 <div className="myAdd">

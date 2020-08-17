@@ -81,25 +81,6 @@ export default class AtualizarUsuario extends Component {
         )
     }
 
-
-
-                // this.setState(res.data) // funciona
-                // // nn funciona nenhum
-                // this.setState(this.logradouro=res.data.endereco.logradouro) 
-                // const {cpf, nome, email, telefone} = res.data
-                // const {logradouro, numero, complemento, bairro, cep, cidade, estado} = res.data.endereco
-                // this.setField('cpf', cpf)
-                // this.setField('nome', nome)
-                // this.setField('email', email)
-                // this.setField('telefone', telefone)
-                // this.setField('logradouro', logradouro)
-                // this.setField('numero', numero)
-                // this.setField('complemento', complemento)
-                // this.setField('bairro', bairro)
-                // this.setField('cep', cep)
-                // this.setField('cidade', cidade)
-                // this.setField('estado', estado)
-
     render() {
         return (
             <div style={{ marginTop: 10 }}>
@@ -156,60 +137,4 @@ export default class AtualizarUsuario extends Component {
             </div>
         )
     }
-}
-
-function _formatPhone(value) {
-    const cleanValue = value.replace(/\D/g, '').substring(0, 11)
-    const nineDigits = cleanValue.length === 11
-    let finalValue = cleanValue.substring(0, 2)
-  
-    if (finalValue) {
-      finalValue = '(' + finalValue
-      const part3Begin = nineDigits ? 7 : 6
-      let part2 = cleanValue.substring(2, part3Begin)
-      if (part2) {
-        if (nineDigits) {
-          part2 = `${part2[0]} ${part2.substring(1, 6)}`
-        }
-        finalValue += ') ' + part2
-        const part3 = cleanValue.substring(part3Begin, 11)
-        if (part3) {
-          finalValue += '-' + part3
-        }
-      }
-    }
-    return finalValue
-  }
-
-function _formatCpf(value) {
-    const cleanValue = value.replace(/\D/g, '').substring(0, 11)
-  
-    let finalValue = cleanValue.substring(0, 3)
-    const part2 = cleanValue.substring(3, 6)
-    if (part2) {
-      finalValue += '.' + part2
-      const part3 = cleanValue.substring(6, 9)
-      if (part3) {
-        finalValue += '.' + part3
-        const part4 = cleanValue.substring(9, 11)
-        if (part4) {
-          finalValue += '-' + part4
-        }
-      }
-    }
-    return finalValue
-}
-
-function formatZipCode(value) {
-    const cleanValue = value.replace(/\D/g, '').substring(0, 8)
-    let finalValue = cleanValue.substring(0, 2)
-    const part2 = cleanValue.substring(2, 5)
-    if (part2) {
-      finalValue += '.' + part2
-      const part3 = cleanValue.substring(5)
-      if (part3) {
-        finalValue += '-' + part3
-      }
-    }
-    return finalValue
 }
