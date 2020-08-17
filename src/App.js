@@ -3,9 +3,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
-import Categorias from './components/categoria/Categorias'
-import Usuarios from './components/usuario/Usuarios'
-import Atividades from './components/atividade/Atividades'
 import ListarCategorias from './components/categoria/ListarCategorias';
 import AtualizarCategoria from './components/categoria/AtualizarCategoria';
 import CriarCategoria from './components/categoria/CriarCategoria';
@@ -58,9 +55,9 @@ export default class App extends Component {
             
             
             {/* not functional */}
-            <Route exact path="/categorias" component={Categorias} />
+            {/* <Route exact path="/categorias" component={Categorias} />
             <Route exact path="/categorias/buscar" component={Atividades} />
-            <Route exact path="/usuarios" component={Usuarios} />
+            <Route exact path="/usuarios" component={Usuarios} /> */}
           </Switch>
         </div>
       </Router>
