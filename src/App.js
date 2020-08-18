@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
-// import Home from './components/Home'
+import Home from './components/Home'
 import ListarCategorias from './components/categoria/ListarCategorias';
 import AtualizarCategoria from './components/categoria/AtualizarCategoria';
 import CriarCategoria from './components/categoria/CriarCategoria';
@@ -23,7 +23,7 @@ export default class App extends Component {
       <div className="container">
       <Router>
           <nav className="navbar navbar-expand-sm navbar-light-bg-light">
-            <p className="navbar-brand">Insight Tracking</p>
+            <Link to={'/'} className="navbar-brand">Insight Tracking</Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
@@ -40,7 +40,7 @@ export default class App extends Component {
           </nav>
         <div className="container" >
           <Switch>
-            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/" component={Home} />
             <Route exact path="/categorias/todas" component={ListarCategorias} />
             <Route exact path="/categorias/criar" component={CriarCategoria} />
             <Route exact path="/categorias/atualizar/:id" component={AtualizarCategoria} />
