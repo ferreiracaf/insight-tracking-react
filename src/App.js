@@ -23,7 +23,7 @@ export default class App extends Component {
       <div className="container">
       <Router>
           <nav className="navbar navbar-expand-sm navbar-light-bg-light">
-            <Link to={'/'} className="navbar-brand">Insight</Link>
+            <Link to={'/'} className="navbar-brand">Insight Tracking</Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">

@@ -62,7 +62,7 @@ export default class CriarUsuario extends Component {
             email,
             telefone
         }
-        Axios.post('http://localhost:8080/usuarios', novoUsuario)
+        Axios.post('https://insight-tracking-postgres-api.herokuapp.com/usuarios', novoUsuario)
         .then(
             (res) =>{
                 this.props.history.push('/usuarios/todos')

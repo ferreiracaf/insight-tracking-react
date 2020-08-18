@@ -23,7 +23,7 @@ export default class AtualizarCategoria extends Component {
         const categoriaEditada = {
             nome: this.state.nome,
         }
-        axios.put('http://localhost:8080/categorias/'+this.props.match.params.id, categoriaEditada)
+        axios.put('https://insight-tracking-postgres-api.herokuapp.com/categorias/'+this.props.match.params.id, categoriaEditada)
             .then(
                 (res) => { 
                     this.props.history.push('/categorias/todas')
@@ -38,7 +38,7 @@ export default class AtualizarCategoria extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8080/categorias/'+this.props.match.params.id)
+        axios.get('https://insight-tracking-postgres-api.herokuapp.com/categorias/'+this.props.match.params.id)
         .then(
             (res) =>{
                 this.setState(

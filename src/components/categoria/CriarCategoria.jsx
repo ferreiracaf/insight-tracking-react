@@ -20,7 +20,7 @@ export default class CriarCategoria extends Component {
         const novaCategoria = {
             nome: this.state.nome,
         }
-        Axios.post('http://localhost:8080/categorias', novaCategoria)
+        Axios.post('https://insight-tracking-postgres-api.herokuapp.com/categorias', novaCategoria)
         .then(
             (res) =>{
                 this.props.history.push('/categorias/todas')

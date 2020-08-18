@@ -13,7 +13,7 @@ export default class ListarUsuarios extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:8080/usuarios')
+        Axios.get('https://insight-tracking-postgres-api.herokuapp.com/usuarios')
             .then(
                 (res) => {
                     this.setState({ usuarios: res.data })

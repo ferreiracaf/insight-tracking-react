@@ -10,7 +10,7 @@ export default class TableRow extends Component {
     }
 
     apagar(){
-        axios.delete('http://localhost:8080/categorias/'+this.props.categoria.id)
+        axios.delete('https://insight-tracking-postgres-api.herokuapp.com/categorias/'+this.props.categoria.id)
         .then(
             (res) =>{
                 console.log('Registro Apagado')

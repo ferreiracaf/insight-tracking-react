@@ -22,7 +22,7 @@ export default class ListarAtividades extends Component {
 
 
     // pesquisaFunction(){
-    //     Axios.get('http://localhost:8080/atividades/?nome='+this.state.pesquisa)
+    //     Axios.get('https://insight-tracking-postgres-api.herokuapp.com/atividades/?nome='+this.state.pesquisa)
     //         .then(
     //             (res) => {
     //                 this.setState({ atividades: res.data.content })
@@ -37,7 +37,7 @@ export default class ListarAtividades extends Component {
     // }
 
     componentDidMount() {
-        Axios.get('http://localhost:8080/atividades/')
+        Axios.get('https://insight-tracking-postgres-api.herokuapp.com/atividades/')
             .then(
                 (res) => {
                     this.setState({ atividades: res.data.content })

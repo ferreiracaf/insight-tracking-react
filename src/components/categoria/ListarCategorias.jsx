@@ -13,7 +13,7 @@ export default class ListarCategorias extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:8080/categorias')
+        Axios.get('https://insight-tracking-postgres-api.herokuapp.com/categorias')
             .then(
                 (res) => {
                     this.setState({ categorias: res.data })

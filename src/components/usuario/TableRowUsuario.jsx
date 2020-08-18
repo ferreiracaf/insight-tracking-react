@@ -11,7 +11,7 @@ export default class TableRowUsuario extends Component {
     }
 
     apagar(){
-        axios.delete('http://localhost:8080/usuarios/'+this.props.usuario.cpf)
+        axios.delete('https://insight-tracking-postgres-api.herokuapp.com/usuarios/'+this.props.usuario.cpf)
         .then(
             (res) =>{
                 console.log('Registro Apagado')

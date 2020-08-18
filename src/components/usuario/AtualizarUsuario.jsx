@@ -41,7 +41,7 @@ export default class AtualizarUsuario extends Component {
             email,
             telefone
         }
-        axios.put('http://localhost:8080/usuarios/'+this.props.match.params.id, usuarioEditado)
+        axios.put('https://insight-tracking-postgres-api.herokuapp.com/usuarios/'+this.props.match.params.id, usuarioEditado)
             .then(
                 (res) => { 
                     this.props.history.push('/usuarios/todos')
@@ -56,7 +56,7 @@ export default class AtualizarUsuario extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8080/usuarios/'+this.props.match.params.id)
+        axios.get('https://insight-tracking-postgres-api.herokuapp.com/usuarios/'+this.props.match.params.id)
         .then(
             (res) =>{
                 this.setState({

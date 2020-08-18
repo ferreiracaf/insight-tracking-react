@@ -24,8 +24,8 @@ export default class CriarUsuario extends Component {
     onSubmit(e) {
         e.preventDefault()
         const {nome, descricao, observacao, id_categoria, cpf_usuario} = this.state
-        const usuarioPromise = Axios.get('http://localhost:8080/usuarios/'+cpf_usuario)
-        const categoriaPromise = Axios.get('http://localhost:8080/categorias/'+id_categoria)
+        const usuarioPromise = Axios.get('https://insight-tracking-postgres-api.herokuapp.com/usuarios/'+cpf_usuario)
+        const categoriaPromise = Axios.get('https://insight-tracking-postgres-api.herokuapp.com/categorias/'+id_categoria)
         
         Promise.all([usuarioPromise, categoriaPromise])
             .then(([{data: usuario}, {data: categoria}]) =>{
@@ -37,7 +37,7 @@ export default class CriarUsuario extends Component {
                     categoria,
                     usuario
                 }
-                return Axios.post('http://localhost:8080/atividades', novaAtividade)
+                return Axios.post('https://insight-tracking-postgres-api.herokuapp.com/atividades', novaAtividade)
             })
         .then(
             (res) =>{

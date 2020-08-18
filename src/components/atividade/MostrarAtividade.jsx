@@ -25,8 +25,8 @@ export default class MostrarAtividade extends Component {
     onSubmit(e) {
         e.preventDefault()
         const {id, nome, descricao, observacao, id_categoria, cpf_usuario} = this.state
-        const usuarioPromise = Axios.get('http://localhost:8080/usuarios/'+cpf_usuario)
-        const categoriaPromise = Axios.get('http://localhost:8080/categorias/'+id_categoria)
+        const usuarioPromise = Axios.get('https://insight-tracking-postgres-api.herokuapp.com/usuarios/'+cpf_usuario)
+        const categoriaPromise = Axios.get('https://insight-tracking-postgres-api.herokuapp.com/categorias/'+id_categoria)
         
         Promise.all([usuarioPromise, categoriaPromise])
             .then(([{data: usuario}, {data: categoria}]) =>{
@@ -37,7 +37,7 @@ export default class MostrarAtividade extends Component {
                     categoria,
                     usuario
                 }
-                return Axios.put('http://localhost:8080/atividades/'+id, atividadeAtualizada)
+                return Axios.put('https://insight-tracking-postgres-api.herokuapp.com/atividades/'+id, atividadeAtualizada)
             })
         .then(
             (res) =>{
@@ -53,7 +53,7 @@ export default class MostrarAtividade extends Component {
     }
 
     componentDidMount(){
-        Axios.get('http://localhost:8080/atividades/'+this.props.match.params.id)
+        Axios.get('https://insight-tracking-postgres-api.herokuapp.com/atividades/'+this.props.match.params.id)
         .then(
             (res) =>{
                 this.setState({
