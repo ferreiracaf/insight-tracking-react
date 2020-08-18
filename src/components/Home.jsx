@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './img/Insight_Avatar.png'
+// import logo from './img/Insight_Avatar.png'
 
 export default class Home extends Component{
     render(){
