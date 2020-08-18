@@ -53,7 +53,6 @@ export default class App extends Component {
             <Route exact path="/atividades/criar" component={CriarAtividade} />
             <Route exact path="/atividades/atualizar/:id" component={AtualizarAtividade} />
             
-            
             {/* not functional */}
             {/* <Route exact path="/categorias" component={Categorias} />
             <Route exact path="/categorias/buscar" component={Atividades} />
